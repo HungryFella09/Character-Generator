@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contemporary Character</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="contemporary-body">
+    <a class="link-home" href="./index.html"
+      ><img class="home" src="pictures/home-button.png" />
+    </a>
+
+    <div class="middle_part">
+      <p class="title">Contemporary Character Generator</p>
+      <div class="display_middle">
+        <div class="center_stage">
+          <p class="prompt_text">first name:</p>
+          <p class="generated_text" id="p">a</p>
+          <p class="prompt_text">last name:</p>
+          <p class="generated_text" id="p1">a</p>
+          <p class="prompt_text">body type:</p>
+          <p class="generated_text" id="p2">a</p>
+          <p class="prompt_text">clothing style:</p>
+          <p class="generated_text" id="p3">a</p>
+          <p class="prompt_text">talent:</p>
+          <p class="generated_text" id="p4">a</p>
+          <p class="prompt_text">flaw:</p>
+          <p class="generated_text" id="p5">a</p>
+          <p class="prompt_text">job:</p>
+          <p class="generated_text" id="p6">a</p>
+          <p class="prompt_text">characteristic:</p>
+          <p class="generated_text" id="p7">a</p>
+        </div>
+      </div>
+
+      <div class="reset-or-save">
+        <button class="reset" onClick="window.location.reload();">
+          generate
+        </button>
+        <button class="save">save</button>
+      </div>
+    </div>
+
+    <script>
+      const srcElement = document.querySelector(".display_middle"),
+        btns = document.querySelectorAll(".save");
+      btns.forEach((btn) => {
+        // looping through each btn
+        // adding click event to each btn
+        btn.addEventListener("click", () => {
+          // creating canvas of element using html2canvas
+          html2canvas(srcElement).then((canvas) => {
+            // adding canvas/screenshot to the body
+            if (btn.id === "take-src-only") {
+              return document.body.appendChild(canvas);
+            }
+            // downloading canvas/screenshot
+            const a = document.createElement("a");
+            a.href = canvas.toDataURL();
+            a.download = "screenshot.jpg";
+            a.click();
+          });
+        });
+      });
+
+      document.addEventListener("keyup", function (e) {
+        if (e.keyCode == 32) window.location.reload();
+      });
+
+      var Firstname = [
+        "Anastasia",
+        "Albert",
+        "Aurora",
+        "Alfred",
+        "Ash",
+
+        "Barbara",
+        "Bob",
+        "Bernard",
+
+        "Carmen",
+        "Carrie",
+        "Cristopher",
+
+        "Donna",
+        "Denise",
+        "Don",
+        "Dobby",
+
+        "Elizabeth",
+        "Eric",
+        "Evan",
+
+        "Florence",
+        "Fender",
+
+        "Georgia",
+        "Gabi",
+        "Gideon",
+
+        "Henrietta",
+        "Harry",
+        "Hester",
+
+        "Iris",
+        "Ivy",
+        "Ivan",
+
+        "Julietta",
+        "Jane",
+        "Juniper",
+        "Jon",
+
+        "Kaithlyn",
+        "Kelly",
+
+        "Laura",
+        "Linda",
+        "Ludovick",
+
+        "Mackenzie",
+        "Margaret",
+        "Mira",
+        "Matilda",
+        "Morgan",
+        "Mario",
+
+        "Nancy",
+        "Nicole",
+        "Nate",
+        "Nora",
+
+        "Olivia",
+        "Orlando",
+
+        "Petra",
+        "Peter",
+        "Pedro",
+
+        "Queen",
+        "Quin",
+        "Quincy",
+
+        "Rebeca",
+        "Robert",
+
+        "Sasha",
+        "Sloan",
+        "Simon",
+
+        "Tina",
+        "Tatiana",
+        "Timmy",
+
+        "Unice",
+        "Ulises",
+
+        "Vera",
+        "Victoria",
+        "Vince",
+
+        "Willow",
+        "Waldo",
+
+        "Xena",
+        "Xavier",
+
+        "Yvone",
+        "Yoshi",
+
+        "Zuri",
+        "Zelda",
+        "Zane",
+      ];
+      var firstname = Firstname[Math.floor(Math.random() * Firstname.length)];
+
+      var Lastname = [
+        "Ashmore",
+        "Addams",
+        "Bagetto",
+        "Carrowe",
+        "Dawks",
+        "Eagles",
+        "Fake",
+        "Ford",
+        "Gloak",
+        "Hart",
+        "Harlow",
+        "Ivans",
+        "Joslen",
+        "King",
+        "Laurens",
+        "Lapwood",
+        "Marshall",
+        "Napier",
+        "Oxford",
+        "Pascal",
+        "Quirk",
+        "Radmoore",
+        "Scamel",
+        "Talon",
+        "Upshall",
+        "Vanderbilt",
+        "Williams",
+        "Xmas",
+        "Yale",
+        "Zogg",
+      ];
+      var lastname = Lastname[Math.floor(Math.random() * Lastname.length)];
+
+      var Bodytype = [
+        "lean",
+        "athletic",
+        "curvy",
+        "pear shaped",
+        "stocky",
+        "chubby",
+        "lanky",
+      ];
+      var bodytype = Bodytype[Math.floor(Math.random() * Bodytype.length)];
+
+      var Clothingstyle = [
+        "goth",
+        "grunge",
+        "basic",
+        "cottagecore",
+        "dark academia",
+        "minimalist",
+        "plain",
+        "retro",
+        "colorful",
+        "chic",
+        "elegant",
+        "atheisure",
+        "punk",
+        "preppy",
+        "lolita",
+        "techwear",
+      ];
+      var clothingstyle =
+        Clothingstyle[Math.floor(Math.random() * Clothingstyle.length)];
+
+      var Talent = [
+        "painting",
+        "drawing",
+        "sculpting",
+        "writing",
+        "gardening",
+        "biking",
+        "dancing",
+        "juggling",
+        "cooking",
+        "swimming",
+        "acting",
+        "singing",
+      ];
+      var talent = Talent[Math.floor(Math.random() * Talent.length)];
+
+      var Flaw = [
+        "clumsy",
+        "quick temper",
+        "snobbish",
+        "arrogant",
+        "anxious",
+        "narrow-minded",
+        "greedy",
+        "unfriendly",
+        "vain",
+        "naive",
+      ];
+      var flaw = Flaw[Math.floor(Math.random() * Flaw.length)];
+
+      var Job = [
+        "teacher",
+        "constructor",
+        "journalist",
+        "novelist",
+        "TV director",
+        "nanny",
+        "unemployed",
+        "student",
+        "newscaster",
+        "cop",
+        "criminal",
+        "psychatrist",
+        "nurse",
+        "doctor",
+        "tailor",
+        "carpenter",
+        "librarian",
+      ];
+      var job = Job[Math.floor(Math.random() * Job.length)];
+
+      var Characteristic = [
+        "face scar",
+        "blind",
+        "furry",
+        "swiftie",
+        "very hairy",
+        "amputee",
+        "tattoo",
+        "wierd smell",
+      ];
+      var characteristic =
+        Characteristic[Math.floor(Math.random() * Characteristic.length)];
+
+      //---------------------------------------------------------
+
+      var paragraph = document.getElementById("p");
+      paragraph.textContent = firstname;
+
+      var paragraph = document.getElementById("p1");
+      paragraph.textContent = lastname;
+
+      var paragraph = document.getElementById("p2");
+      paragraph.textContent = bodytype;
+
+      var paragraph = document.getElementById("p3");
+      paragraph.textContent = clothingstyle;
+
+      var paragraph = document.getElementById("p4");
+      paragraph.textContent = talent;
+
+      var paragraph = document.getElementById("p5");
+      paragraph.textContent = flaw;
+
+      var paragraph = document.getElementById("p6");
+      paragraph.textContent = job;
+
+      var paragraph = document.getElementById("p7");
+      paragraph.textContent = characteristic;
+    </script>
+  </body>
+</html>

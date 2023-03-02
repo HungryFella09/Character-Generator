@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contemporary Character</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="contemporary-body">
+    <a class="link-home" href="./index.html"
+      ><img class="home" src="pictures/home-button.png" />
+    </a>
+    <div class="middle_part">
+      <p class="title">Hero or Villain Generator</p>
+      <div class="display_middle">
+        <div class="center_stage">
+          <p class="prompt_text">name:</p>
+          <p class="generated_text" id="p">a</p>
+          <p class="prompt_text">allegiance:</p>
+          <p class="generated_text" id="p1">a</p>
+          <p class="prompt_text">super power:</p>
+          <p class="generated_text" id="p2">a</p>
+          <p class="prompt_text">weakness:</p>
+          <p class="generated_text" id="p3">a</p>
+          <p class="prompt_text">power source:</p>
+          <p class="generated_text" id="p4">a</p>
+          <p class="prompt_text">body type:</p>
+          <p class="generated_text" id="p5">a</p>
+          <p class="prompt_text">costume:</p>
+          <p class="generated_text" id="p6">a</p>
+          <p class="prompt_text">characteristic:</p>
+          <p class="generated_text" id="p7">a</p>
+        </div>
+      </div>
+
+      <div class="reset-or-save">
+        <button class="reset" onClick="window.location.reload();">
+          generate
+        </button>
+        <button class="save">save</button>
+      </div>
+    </div>
+
+    <script>
+      const srcElement = document.querySelector(".display_middle"),
+        btns = document.querySelectorAll(".save");
+      btns.forEach((btn) => {
+        // looping through each btn
+        // adding click event to each btn
+        btn.addEventListener("click", () => {
+          // creating canvas of element using html2canvas
+          html2canvas(srcElement).then((canvas) => {
+            // adding canvas/screenshot to the body
+            if (btn.id === "take-src-only") {
+              return document.body.appendChild(canvas);
+            }
+            // downloading canvas/screenshot
+            const a = document.createElement("a");
+            a.href = canvas.toDataURL();
+            a.download = "screenshot.jpg";
+            a.click();
+          });
+        });
+      });
+
+      document.addEventListener("keyup", function (e) {
+        if (e.keyCode == 32) window.location.reload();
+      });
+
+      var Name = [
+        "Ash",
+        "Swiftwind",
+        "Flint",
+        "Omega",
+        "Agent",
+        "Epsilon",
+        "Zeta",
+        "Kappa",
+        "Omicron",
+        "Rho",
+        "Athena",
+        "Zeus",
+        "Arell",
+        "Stone",
+        "Herho",
+        "Sidestep",
+      ];
+      var name = Name[Math.floor(Math.random() * Name.length)];
+
+      var Allegiance = [
+        "superhero",
+        "supervillain",
+        "vigilante",
+        "anti-hero",
+        "sidekick",
+        "henchman",
+      ];
+      var allegiance =
+        Allegiance[Math.floor(Math.random() * Allegiance.length)];
+
+      var SuperPower = [
+        "super strength",
+        "super hearing",
+        "laser eyes",
+        "mind reading",
+        "can speak to animals",
+        "teleportation",
+        "super speed",
+        "lightning",
+        "shadow control",
+        "time travelling",
+        "super reflexes",
+        "healing powers",
+        "hightened intelligence",
+        "mind control",
+        "time freezing",
+        "flight",
+        "ice powers",
+        "weather manipulation",
+        "fire powers",
+        "water control",
+        "air manipulation",
+        "invisibility",
+        "metal skin",
+        "poisonous touch",
+        "sound bending",
+        "shapeshifting",
+        "speak any language",
+      ];
+      var superPower =
+        SuperPower[Math.floor(Math.random() * SuperPower.length)];
+
+      var Weakness = [
+        "short lifespan",
+        "5 min time limit",
+        "powers are exhausting",
+        "powers are unreliable",
+        "can't control the powers",
+        "can use once per day",
+      ];
+      var weakness = Weakness[Math.floor(Math.random() * Weakness.length)];
+
+      var PowerSource = [
+        "result of an experiment",
+        "born with them",
+        "given by an old woman",
+        "result of praying",
+        "result of good deeds",
+        "a curse",
+        "from a separate dimension",
+        "result of training",
+        "from intense reaserch",
+        "from an anchient spell",
+        "given by a diety",
+        "unknown origin",
+      ];
+      var powerSource =
+        PowerSource[Math.floor(Math.random() * PowerSource.length)];
+
+      var Bodytype = [
+        "lean",
+        "athletic",
+        "curvy",
+        "pear shaped",
+        "stocky",
+        "chubby",
+        "lanky",
+        "gigantic",
+        "tiny",
+        "muscular",
+      ];
+      var bodytype = Bodytype[Math.floor(Math.random() * Bodytype.length)];
+
+      var Costume = [
+        "dark",
+        "mysterious",
+        "flashy",
+        "colorful",
+        "practical",
+        "hand-made",
+        "scary",
+        "simple spandex",
+      ];
+      var costume = Costume[Math.floor(Math.random() * Costume.length)];
+
+      var Characteristic = [
+        "face scar",
+        "clumsy",
+        "quick temper",
+        "snobbish",
+        "arrogant",
+        "anxious",
+        "narrow-minded",
+        "greedy",
+        "unfriendly",
+        "vain",
+        "naive",
+        "blind",
+        "very hairy",
+        "amputee",
+        "tattoo",
+        "wierd smell",
+        "uncertain morals",
+      ];
+      var characteristic =
+        Characteristic[Math.floor(Math.random() * Characteristic.length)];
+
+      //---------------------------------------------------------
+
+      var paragraph = document.getElementById("p");
+      paragraph.textContent = name;
+
+      var paragraph = document.getElementById("p1");
+      paragraph.textContent = allegiance;
+
+      var paragraph = document.getElementById("p2");
+      paragraph.textContent = superPower;
+
+      var paragraph = document.getElementById("p3");
+      paragraph.textContent = weakness;
+
+      var paragraph = document.getElementById("p4");
+      paragraph.textContent = powerSource;
+
+      var paragraph = document.getElementById("p5");
+      paragraph.textContent = bodytype;
+
+      var paragraph = document.getElementById("p6");
+      paragraph.textContent = costume;
+
+      var paragraph = document.getElementById("p7");
+      paragraph.textContent = characteristic;
+    </script>
+  </body>
+</html>
